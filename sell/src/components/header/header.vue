@@ -138,10 +138,8 @@
             font-size: 10px
             .icon
               display: inline-block
-              width: 12px
-              height: 12px
               margin-right: 4px
-              vertical-align: middle
+              vertical-align: top
               background-size: 12px 12px
               background-repeat: no-repeat
               &.discount
