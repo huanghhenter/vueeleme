@@ -47,9 +47,11 @@ const router =new VueRouter({
 // })	
 const app= new Vue({
 	router:router,
+	// APP组件渲染
 	render: h => h(App)
+	// 手动挂载
 }).$mount('#app');
-
+// 显示的第一个页面
 router.push('/goods');
 
 

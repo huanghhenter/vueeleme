@@ -3,13 +3,13 @@
     	<v-header :header-seller="seller"></v-header>
     	<div class="tab border-1px">
     		<div class="tab-item">
-    			<router-link to="/goods">商品</router-link>
+    			<router-link to="/goods" active-class="active">商品</router-link>
     		</div>
     		<div class="tab-item">
-    			<router-link to="/ratings">评论</router-link>
+    			<router-link to="/ratings" active-class="active">评论</router-link>
     		</div>
     		<div class="tab-item">
-    			<router-link to="/sellers">商家</router-link>
+    			<router-link to="/sellers" active-class="active">商家</router-link>
     		</div>
     	</div>
     	
@@ -64,12 +64,12 @@
 	    .tab-item
 	      flex:1
 	      text-align:center
-	      &>a
-	        dispaly:block
-	        text-decoration:none
-	        font-size:14px
-	        color:rgb(77,85,93)
-	        &.router-link-acticve
-	          color: rgb(240,20,20)
+	      & > a
+	       display:block
+	       text-decoration:none
+	       font-size:14px
+	       color: rgb(77,85,93)
+	       &.active
+	         color:rgb(240,20,20)
 
 </style>

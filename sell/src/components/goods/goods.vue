@@ -1,4 +1,5 @@
 <template>
+<div class="total">
 	<div class="goods">
 		<div class="menu-wrapper" ref="menu">
 			<ul class="menu">
@@ -13,7 +14,7 @@
 				<li v-for="item in goods" class="foods-item foods-list-hook">
 					<h1 class="text">{{item.name}}</h1>
 					<ul class="food">
-						<li v-for="items in item.foods" class="food-item">
+						<li @click="selectfood(items)" v-for="items in item.foods" class="food-item">
 							<div class="icon">
 								<img :src="items.icon" width="57" height="57">
 							</div>
@@ -39,14 +40,17 @@
 			</ul>
 		</div>
 		<shopcar :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice" :select-foods="selectFoods"></shopcar>
+		
     </div>
-  
+        <food :food="selectedFood" ref="food"></food>
+        </div>
 </template>
 
 <script type="text/esmascript-6">
 	import BScroll from 'better-scroll';
 	import shopcar from '../shopcar/shopcar';
     import carcontrol from '../carcontrol/carcontrol';
+    import food from '../food/food';
 	const ERR_OK=0;
 	export default{ 
 
@@ -58,8 +62,8 @@
 			return {
 				goods:[],
 				listHeight:[],
-				scrollY:0
-				
+				scrollY:0,
+				selectedFood: {}
 			};
 		},
 
@@ -142,10 +146,17 @@
        			 		this.listHeight.push(height);
       			}
     		},
+    		selectfood(items) {
+    		
+    			this.selectedFood = items;
+
+    			this.$refs.food.show();
+    		}
 		},
 		components: {
 			shopcar,
-			carcontrol
+			carcontrol,
+			food
 		}
 
 	};
@@ -153,6 +164,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus"> 
 	 @import "../../common/stylus/mixin.styl";
+  
 	.goods
 	  display:flex
 	  position:absolute

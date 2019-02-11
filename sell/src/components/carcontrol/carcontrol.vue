@@ -1,8 +1,8 @@
 <template>
 	<div class="carcontrol">
-		<div class="decrease icon-remove_circle_outline" @click="carDecrease"  v-show="food.count>0"></div>
-		<div class="food-count" v-show="food.count>0">{{food.count}}</div>
-		<div class="car-add icon-add_circle" @click="add"></div>
+		<div class="decrease icon-remove_circle_outline" @click.stop.prevent="carDecrease"  v-show="food.count>0"></div>
+		<div class="foodcount" v-show="food.count>0">{{food.count}}</div>
+		<div class="car-add icon-add_circle" @click.stop.prevent="add"></div>
 	</div>
 </template>
 
@@ -39,16 +39,16 @@
 <style lang="stylus">
     .carcontrol
       font-size:0
-      text-align:center
+   
 	  .decrease
 	    display:inline-block
 	    padding:6px
 	    font-size:24px
 	    color:rgb(0,160,220)
-	  .food-count
+	  .foodcount
 	    display:inline-block
-	    width:24px
-	    height:24px
+	    text-align:center
+	    width:12px
 	    padding-top:6px
 	    vertical-align:top
 	    line-height:24px
