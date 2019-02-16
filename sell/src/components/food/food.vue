@@ -1,43 +1,45 @@
 <template>
   <transition name="fade">
-		<div v-show="showFlag" class="food-two border-1px" ref="foods">
-			<div class="food-image">
-				<img :src="food.image" class="image-wrapper">
-        <div class="close" @click="hide">
-          <i class="icon-arrow_lift"></i>
+		<div v-show="showFlag" class="foodds " ref="foodds">
+      <div cladd="total-wrapper">
+  			<div class="food-image">
+  				<img :src="food.image" class="image-wrapper">
+          <div class="close" @click="hide">
+            <i class="icon-arrow_lift"></i>
+          </div>
+  			</div>
+        <div class="food-content">
+          <div class="food-name">
+            {{food.name}}
+          </div>
+          <div class="food-detail">
+            <span class="food-count">{{food.sellCount}}</span><span class="food-rating">{{food.rating}}</span>
+          </div>
+          <div class="food-price">
+            <span class="now-price">{{food.price}}</span><span class="old-price">{{food.oldprice}}</span>
+          </div>
+          <div class='control'>
+            <carcontrol :food="food"></carcontrol>
+          </div>
+          <div @click.stop.prevent="firstAdd(food)" class="enter" v-show="!food.count || food.count===0">加入购物车</div>
         </div>
-			</div>
-      <div class="food-content">
-        <div class="food-name">
-          {{food.name}}
+        <split></split>
+        <div class="tile">商家评价</div>
+        <ratingselec :select-type="selectType" :only-content = 'onlyContent' :desc = 'desc'  @bigMon="bigMon" @only="only" :ratings='food.ratings'>
+        </ratingselec>
+        <div class="rating-wrapper">
+          <ul v-show="food.ratings && food.ratings.length" class="rating">
+            <li v-for="ratings in food.ratings" class="rating-item " v-show="needShow(ratings.rateType,ratings.text)">
+              <div class="rating-time">
+                <span class="time">{{ratings.rateTime}}</span>
+              </div>
+              <div class="rating-text">
+                <span :class="{'icon-thumb_down':ratings.rateType===1,'icon-thumb_up':ratings.rateType===0}"></span>
+                <span class="text">{{ratings.text}}</span>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="food-detail">
-          <span class="food-count">{{food.sellCount}}</span><span class="food-rating">{{food.rating}}</span>
-        </div>
-        <div class="food-price">
-          <span class="now-price">{{food.price}}</span><span class="old-price">{{food.oldprice}}</span>
-        </div>
-        <div class='control'>
-          <carcontrol :food="food"></carcontrol>
-        </div>
-        <div @click.stop.prevent="firstAdd(food)" class="enter" v-show="!food.count || food.count===0">加入购物车</div>
-      </div>
-      <split></split>
-      <div class="tile">商家评价</div>
-      <ratingselec :select-type="selectType" :only-content = 'onlyContent' :desc = 'desc'  @bigMon="bigMon" @only="only" :ratings='food.ratings'>
-      </ratingselec>
-      <div class="rating-wrapper">
-        <ul v-show="food.ratings && food.ratings.length" class="rating">
-          <li v-for="ratings in food.ratings" class="rating-item " v-show="needShow(ratings.rateType,ratings.text)">
-            <div class="rating-time">
-              <span class="time">{{ratings.rateTime}}</span>
-            </div>
-            <div class="rating-text">
-              <span :class="{'icon-thumb_down':ratings.rateType===1,'icon-thumb_up':ratings.rateType===0}"></span>
-              <span class="text">{{ratings.text}}</span>
-            </div>
-          </li>
-        </ul>
       </div>
 		</div>
 
@@ -79,13 +81,13 @@
           this.onlyContent = false;
             this.$nextTick(function () {
               if(!this.scroll){
-                  this.scroll = new BScroll(this.$refs.foods,{
+                  this.scroll = new BScroll(this.$refs.foodds,{
                     click:true
 
-                     })
-              }else{
-                          this.scroll.refresh();
+                     });
               }
+                this.scroll.refresh();
+              
             });
 		 },
     hide() {
@@ -136,7 +138,7 @@
   
 
 
-  .food-two
+  .foodds
     position: fixed
     top: 0
     left: 0

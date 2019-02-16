@@ -30,11 +30,11 @@
            };
 		},
 		created() {
-			this.$http.get('/api/seller').then((response) => {
-				response=response.body;
-				// console.log(response);
-				if(response.errno === ERR_OK) {
-					this.seller = response.data;
+			this.$http.get('/api/seller').then((re) => {
+				re=re.body;
+				console.log(re);
+				if(re.errno === ERR_OK) {
+					this.seller = re.data;
 
 				}
 

@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="detail-close">
+      <div class="detail-close" @click="close">
         <i class="icon-close"></i>
       </div>
     </div>
@@ -82,6 +82,9 @@
     methods:{
       showDetail() {
         this.detailShow = true;
+      },
+      close(){
+        this.detailShow = false;
       }
     },
 		created() {
@@ -194,11 +197,12 @@
 	      vertical-align:top
 	      margin: 0 4px
 	      font-size:10px
-	    .icon-keyboard_arrow_right
-	      position:absolute
-	      font-size:10px
-	      right:12px
-	      height:8px
+      .icon-keyboard_arrow_right
+        position:absolute
+        right:18px
+        top:8px
+        font-size:12px
+        height:10px
     .background
       position:absolute
       top:0
@@ -211,7 +215,7 @@
       position:fixed
       top:0
       left:0
-      z-index:10
+      z-index:100
       width:100%
       height:100%
       overflow:auto
@@ -303,7 +307,7 @@
         position:relative
         width: 32px
         height:32px
-        margin:-64px auto 0 auto
+        margin:-80px auto 0 auto
         clear:both
         font-size:32px
        

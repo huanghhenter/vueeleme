@@ -128,7 +128,9 @@
 				});
 
 				this.foodScroll = new BScroll(this.$refs.foods,{
-					probeType:3
+					probeType:3,
+					click:true
+					
 				});
 
 				this.foodScroll.on('scroll',(pos)=>{
@@ -233,9 +235,9 @@
 	           padding:0
 	           .food-item
 	             display:flex
-	             margin:18px
+	             margin:0 18px
 	             border-1px(rgba(7,17,27,0.1))
-	             padding-bottom:18px
+	             padding:18px 0
 	             &:last-child
 	               border-none()
 	             .icon
@@ -277,7 +279,7 @@
                        color: rgb(147,153,159)
                  .control-wrapper
                    position:absolute  
-                   bottom:0px
+                   bottom:-12px
                    right:18px                   
 
 
