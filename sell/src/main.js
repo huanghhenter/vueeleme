@@ -52,7 +52,7 @@ const app= new Vue({
 	// 手动挂载
 }).$mount('#app');
 // 显示的第一个页面
-router.push('/goods');
+// router.push('/goods');
 
 
 

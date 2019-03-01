@@ -12,9 +12,9 @@
     			<router-link to="/sellers" active-class="active">商家</router-link>
     		</div>
     	</div>
-    	
-      	<router-view :seller="seller"></router-view>
-      	
+    	<keep-alive>
+      		<router-view :seller="seller" ></router-view>
+      	</keep-alive>
     	
     </div>
 </template>
@@ -26,19 +26,27 @@
 	export default {
 		data(){
            return {
-           	seller: {} //定义一个对象
+           	seller: {} ,
+           //定义一个对象
            };
 		},
 		created() {
 			this.$http.get('/api/seller').then((re) => {
 				re=re.body;
-				console.log(re);
+				// console.log(re);
 				if(re.errno === ERR_OK) {
 					this.seller = re.data;
 
 				}
 
 			});
+			// this.$http.get('api/ratings').then((response)=>{
+			// 	response=response.body;
+			// 	console.log(response)
+			// 	if(response.errno===ERR_OK){
+			// 		this.ratings=response.data;
+			// 	}
+			// })
 		},
 		 computed: {
          selectedFoods() {

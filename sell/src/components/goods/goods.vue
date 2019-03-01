@@ -97,7 +97,7 @@
 
 				if(response.data.errno === ERR_OK) {
 					this.goods = response.data.data;
-					console.log(response.data)
+					
 					this.$nextTick(()=> {
 						this._initScroll();
 						this.calcHeight();

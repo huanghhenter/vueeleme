@@ -59,10 +59,13 @@
 		methods: {
 			select(type){
 				this.$emit('bigMon',type)
+				click:true;
+
 
 			},
 			chooseContent()	{
 				this.$emit('only')
+				click:true;
 			}  
 	}
 		}

@@ -30,6 +30,7 @@
 			itemClasses (){
 				let result = [];
 				let score = Math.floor(this.score*2)/2;
+          // 小于0.5不算半星
 				let hasDecimal = score % 1!==0;
 				let integer = Math.floor(score);
 				for(let i =0; i<integer;i++) {
@@ -53,6 +54,7 @@
  @import "../../common/stylus/mixin.styl"
 
    .star
+     display:inline-block
      font-size: 0
      .star-item
        display:inline-block
